@@ -1,4 +1,4 @@
-# Terminal Minecraft Clone
+# Basic Minecraft implementation with ASCII characters in C
 
 A simple 3D raycasting demo inspired by Minecraft, rendered in the terminal using ASCII characters and color codes.
 
