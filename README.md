@@ -2,6 +2,8 @@
 
 A simple 3D raycasting demo inspired by Minecraft, rendered in the terminal using ASCII characters and color codes.
 
+![Gameplay Screenshot](source/readme_image.png) 
+
 ## Prerequisites
 
 You need a C compiler (like GCC) and the `make` utility installed.
@@ -55,4 +57,4 @@ To remove the compiled object file and executable, run:
 
 ```bash
 make clean
-``` 
+```
