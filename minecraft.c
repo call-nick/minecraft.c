@@ -429,6 +429,7 @@ int main() {
         if (is_key_pressed('q')) {
             free_blocks(blocks);
             free_picture(picture);
+            restore_terminal();
             exit(0);
         }
         update_pos_view(&posview, blocks);
