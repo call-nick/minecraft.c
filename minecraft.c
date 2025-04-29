@@ -240,7 +240,7 @@ char raytrace(vect pos, vect dir, char*** blocks) {
     return ' ';
 }
 
-char** get_picture(char** picture, player_pos_view posview, char*** blocks) {
+void get_picture(char** picture, player_pos_view posview, char*** blocks) {
     vect** directions = init_directions(posview.view);
     for (int y = 0; y < Y_PIXELS; y++) {
         for (int x = 0; x < X_PIXELS; x++) {
