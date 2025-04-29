@@ -77,6 +77,15 @@ char** init_picture() {
     return picture;
 }
 
+void free_picture(char** picture) {
+    if (!picture) return;
+    
+    for (int i = 0; i < Y_PIXELS; i++) {
+        free(picture[i]);
+    }
+    free(picture);
+}
+
 char*** init_blocks() {
     char*** blocks = malloc(sizeof(char**) * Z_BLOCKS);
     for (int i = 0; i < Z_BLOCKS; i++) {
@@ -419,6 +428,7 @@ int main() {
         process_input();
         if (is_key_pressed('q')) {
             free_blocks(blocks);
+            free_picture(picture);
             exit(0);
         }
         update_pos_view(&posview, blocks);
@@ -451,5 +461,6 @@ int main() {
     }
     restore_terminal();
     free_blocks(blocks);
+    free_picture(picture);
     return 0;
 }
