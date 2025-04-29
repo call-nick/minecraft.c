@@ -164,6 +164,15 @@ vect** init_directions(vect2 view) {
     return dir;
 }
 
+void free_directions(vect** directions) {
+    if (!directions) return;
+    
+    for (int y = 0; y < Y_PIXELS; y++) {
+        free(directions[y]);
+    }
+    free(directions);
+}
+
 int ray_outside(vect pos) {
     if (pos.x >= X_BLOCKS || pos.y >= Y_BLOCKS || pos.z >= Z_BLOCKS
         || pos.x < 0 || pos.y < 0 || pos.z < 0) {
@@ -238,6 +247,7 @@ char** get_picture(char** picture, player_pos_view posview, char*** blocks) {
             picture[y][x] = raytrace(posview.pos, directions[y][x], blocks);
         }
     }
+    free_directions(directions);
 }
 
 void draw_ascii(char** picture) {
