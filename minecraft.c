@@ -91,6 +91,19 @@ char*** init_blocks() {
     return blocks;
 }
 
+void free_blocks(char*** blocks) {
+    if (!blocks) return;
+
+    for (int i = 0; i < Z_BLOCKS; i++) {
+        if (!blocks[i]) continue;
+        for (int j = 0; j < Y_BLOCKS; j++) {
+            free(blocks[i][j]);
+        }
+        free(blocks[i]);
+    }
+    free(blocks);
+}
+
 player_pos_view init_posview() {
     player_pos_view posview;
     posview.pos.x = 5;
@@ -405,6 +418,7 @@ int main() {
     while (1) {
         process_input();
         if (is_key_pressed('q')) {
+            free_blocks(blocks);
             exit(0);
         }
         update_pos_view(&posview, blocks);
@@ -436,5 +450,6 @@ int main() {
         usleep(20000);
     }
     restore_terminal();
+    free_blocks(blocks);
     return 0;
 }
